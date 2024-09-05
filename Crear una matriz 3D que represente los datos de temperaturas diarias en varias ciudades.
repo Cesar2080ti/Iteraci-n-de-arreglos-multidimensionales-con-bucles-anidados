@@ -1,0 +1,35 @@
+# Crear un programa que me permita ver las temperaturas de 3 ciudaddes
+ciudades = 3  # Número de ciudades
+dias = 7  # Días de la semana
+semanas = 2  # Número de semanas
+
+# Crear la matriz 3D de temperaturas aleatorias
+import random
+
+# Crear la matriz de ciudades x días x semanas
+temperaturas = [[[random.uniform(15.0, 30.0) for _ in range(dias)] for _ in range(semanas)] for _ in range(ciudades)]
+
+# Nombres de las ciudades y días de la semana
+nombres_ciudades = ["Ciudad1", "Ciudad2", "Ciudad3"]
+nombres_dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+
+# Mostrar la matriz de temperaturas
+print("Temperaturas diarias (en °C):")
+for ciudad in range(ciudades):
+    print(f"\nTemperaturas para {nombres_ciudades[ciudad]}:")
+    for semana in range(semanas):
+        print(f"  Semana {semana + 1}:")
+        for dia in range(dias):
+            print(f"    {nombres_dias[dia]}: {temperaturas[ciudad][semana][dia]:.2f}°C")
+
+# Calcular y mostrar el promedio de temperaturas para cada ciudad por semana
+print("\nPromedio de temperaturas por ciudad y semana:")
+for ciudad in range(ciudades):
+    print(f"\n{nombres_ciudades[ciudad]}:")
+    for semana in range(semanas):
+        suma_temperaturas = 0
+        for dia in range(dias):
+            suma_temperaturas += temperaturas[ciudad][semana][dia]
+
+        promedio = suma_temperaturas / dias
+        print(f"  Promedio de la semana {semana + 1}: {promedio:.2f}°C")
